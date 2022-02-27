@@ -16,6 +16,9 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.10"]
+  release:
+    if: ${{ github.ref == 'master' }}
+    needs: codecov
 
     steps:
     - uses: actions/checkout@v2
@@ -36,4 +39,4 @@ jobs:
         pipenv run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Rodar tests
       run: |
-        pipenv run pytest
+        pipenv run pytest --cov=py_django
