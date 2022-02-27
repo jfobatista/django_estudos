@@ -37,3 +37,9 @@ jobs:
     - name: Rodar tests
       run: |
         pipenv run pytest --cov=py_django
+
+    - name: Relatório Codecov
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      run: |
+        pipenv run codecov
