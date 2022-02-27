@@ -16,9 +16,9 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.10"]
-  release:
-    if: ${{ github.ref == 'master' }}
-    needs: codecov
+    release:
+        if: ${{ github.ref == 'master' }}
+        needs: codecov
 
     steps:
     - uses: actions/checkout@v2
